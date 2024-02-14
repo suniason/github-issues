@@ -41,7 +41,6 @@ const Pagination = ({ page, hasNext, hasPrev, setPage }) => {
             disabled={!hasPrev}
             onClick={() => {
               handlePageChange(page - 1)
-              console.log('clicked')
             }}
           >
             Previous
@@ -56,8 +55,6 @@ const Pagination = ({ page, hasNext, hasPrev, setPage }) => {
             disabled={!hasNext}
             onClick={() => {
               handlePageChange(page + 1)
-              console.log('clicked')
-              console.log(hasNext)
             }}
           >
             Next

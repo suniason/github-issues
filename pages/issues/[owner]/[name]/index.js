@@ -8,7 +8,7 @@ const IssuesPages = (props) => {
   const { data, params, query, hasNext, hasPrev } = props
   const { owner, name } = params
   const { state, page } = query
-  const [currentPage, setCurrentPage] = useState(page || 1)
+  const [currentPage, setCurrentPage] = useState(parseInt(page) || 1)
   const [statusFilter, setStatusFilter] = useState(state || 'open')
 
   if (data?.message === 'Not Found' || !data) {
@@ -46,7 +46,7 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(
     `https://api.github.com/repos/${owner}/${name}/issues?state=${
       state || 'open'
-    }&page=${page || '1'}`
+    }&page=${page || 1}`
   )
   const data = await response.json()
 
