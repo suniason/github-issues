@@ -1,11 +1,12 @@
 import LabelTag from '@/components/label/labeltag'
 import StatusTag from '@/components/status/statustag'
 import { formatDate } from '@/util/format'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Markdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 const IssuePage = (props) => {
+  const router = useRouter()
   const {
     title,
     user: { login: author },
@@ -20,14 +21,17 @@ const IssuePage = (props) => {
   return (
     <>
       <header>
-        <Link href={`/issues/${owner}/${name}`}>
-          <div className="flex group cursor-pointer w-fit text-lg">
-            <div className="group-hover:-translate-x-2 transition-all">
-              &#11164;
-            </div>
-            <div className="group-hover:underline mx-2">Go Back</div>
+        <div className="flex group cursor-pointer w-fit text-lg">
+          <div className="group-hover:-translate-x-2 transition-all">
+            &#11164;
           </div>
-        </Link>
+          <div
+            className="group-hover:underline mx-2 "
+            onClick={() => router.back()}
+          >
+            Go Back
+          </div>
+        </div>
         <div className="text-3xl my-2">
           {title}
           <span className="text-neutral-400">{` #${number}`}</span>
@@ -49,7 +53,7 @@ const IssuePage = (props) => {
         <div className="text-lg font-semibold bg-slate-800 py-2 px-5 rounded-lg">
           {author}
         </div>
-        <div className="p-5 border border-neutral-500 border-1 border-t-0 rounded-b-lg">
+        <div className="p-5 border border-neutral-500 border-1 border-t-0 rounded-b-lg mb-10">
           <Markdown
             className="markdown prose-blue prose prose-invert"
             rehypePlugins={[rehypeRaw]}

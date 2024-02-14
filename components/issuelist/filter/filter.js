@@ -8,7 +8,6 @@ const StatusFilter = ({ setStatusFilter, statusFilter, setPage }) => {
   ]
 
   const selectedStatus = status.find((item) => item.state === statusFilter)
-
   return (
     <div className="flex gap-10 my-10">
       <div className="font-semibold py-2">Filter: </div>

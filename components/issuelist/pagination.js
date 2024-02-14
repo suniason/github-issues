@@ -46,7 +46,11 @@ const Pagination = ({ page, hasNext, hasPrev, setPage }) => {
             Previous
           </button>
         </div>
-        <div className="flex group cursor-pointer w-fit text-lg ">
+        <div
+          className={`flex group cursor-pointer w-fit text-lg ${
+            hasNext ? '' : 'text-neutral-500'
+          }`}
+        >
           <button
             className={`mx-2 ${
               hasNext ? 'hover:underline hover:text-blue-500' : ''
@@ -61,7 +65,7 @@ const Pagination = ({ page, hasNext, hasPrev, setPage }) => {
           </button>{' '}
           <div
             className={`${
-              hasPrev ? 'group-hover:translate-x-2' : ''
+              hasNext ? 'group-hover:translate-x-2' : ''
             } transition-all`}
           >
             &#11166;
